@@ -1,0 +1,245 @@
+/* ============================================================
+   ARRC Design System — colors_and_type.css
+   Accountability & Reform Research Consortium
+   ============================================================
+
+   The brand identity is a research consortium: serious, civic,
+   publication-like. The logo uses deep navy and accent red.
+   The year-one report HTML uses a warm-paper background with
+   muted greens, purple, and orange-red as data accents.
+
+   Typography is a classic editorial pairing: a serif for display
+   / headlines (evoking scholarly publication) and a clean grotesk
+   for body + data.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ========== BRAND CORE ========== */
+  --arrc-navy:            #1E2A4A;   /* logo pillar / primary ink */
+  --arrc-navy-deep:       #14203D;   /* hover / depth */
+  --arrc-navy-soft:       #334266;   /* secondary ink */
+  --arrc-red:             #C9342B;   /* logo accent / emphasis */
+  --arrc-red-deep:        #A02821;
+  --arrc-red-soft:        #E05A4F;
+
+  /* ========== DATA ACCENTS (from report) ========== */
+  --arrc-purple:          #534AB7;   /* funded projects / primary data */
+  --arrc-purple-soft:     #8A84D0;
+  --arrc-purple-tint:     #E2E0F3;
+
+  --arrc-orange:          #D85A30;   /* host institutions / secondary data */
+  --arrc-orange-soft:     #E88A6B;
+  --arrc-orange-tint:     #F8DDD1;
+
+  --arrc-teal:            #1D9E75;   /* funding / positive */
+  --arrc-teal-mid:        #5DCAA5;
+  --arrc-teal-soft:       #9FE1CB;
+  --arrc-teal-tint:       #D9F1E7;
+
+  /* ========== NEUTRALS (warm paper) ========== */
+  --arrc-paper:           #F5F2E9;   /* page / warm background */
+  --arrc-paper-2:         #EDE9DC;   /* subtle card fill */
+  --arrc-paper-3:         #E2DCC9;   /* divider tint */
+  --arrc-ink-900:         #1B1B18;   /* primary text */
+  --arrc-ink-700:         #444441;   /* secondary text */
+  --arrc-ink-500:         #6B6A63;   /* tertiary text */
+  --arrc-ink-300:         #B4B2A9;   /* borders / land strokes */
+  --arrc-ink-200:         #D4D0C1;
+  --arrc-ink-100:         #EEEAE0;
+  --arrc-white:           #FFFFFF;
+
+  /* ========== SEMANTIC SURFACES ========== */
+  --color-background-primary:   var(--arrc-paper);
+  --color-background-secondary: var(--arrc-paper-2);
+  --color-background-tertiary:  var(--arrc-paper-3);
+  --color-background-inverse:   var(--arrc-navy);
+  --color-surface-card:         var(--arrc-white);
+
+  /* ========== SEMANTIC TEXT ========== */
+  --color-text-primary:     var(--arrc-ink-900);
+  --color-text-secondary:   var(--arrc-ink-700);
+  --color-text-tertiary:    var(--arrc-ink-500);
+  --color-text-inverse:     var(--arrc-paper);
+  --color-text-brand:       var(--arrc-navy);
+  --color-text-accent:      var(--arrc-red);
+  --color-text-link:        var(--arrc-navy);
+
+  /* ========== SEMANTIC BORDERS ========== */
+  --color-border-primary:   var(--arrc-ink-300);
+  --color-border-secondary: var(--arrc-ink-200);
+  --color-border-tertiary:  var(--arrc-ink-100);
+  --color-border-strong:    var(--arrc-navy);
+
+  /* ========== DATA-VIZ PALETTE ========== */
+  --dataviz-1: var(--arrc-purple);
+  --dataviz-2: var(--arrc-orange);
+  --dataviz-3: var(--arrc-teal);
+  --dataviz-4: var(--arrc-teal-mid);
+  --dataviz-5: var(--arrc-teal-soft);
+  --dataviz-6: var(--arrc-navy);
+
+  /* ========== TYPE FAMILIES ========== */
+  --font-serif:   'Source Serif 4', 'Source Serif Pro', Georgia, 'Times New Roman', serif;
+  --font-sans:    'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'SF Mono', Menlo, Consolas, monospace;
+
+  /* ========== TYPE SCALE ========== */
+  --fs-display:   56px;   --lh-display: 1.05;   --ls-display: -0.02em;
+  --fs-h1:        40px;   --lh-h1:      1.1;    --ls-h1:      -0.015em;
+  --fs-h2:        28px;   --lh-h2:      1.2;    --ls-h2:      -0.01em;
+  --fs-h3:        20px;   --lh-h3:      1.3;
+  --fs-h4:        16px;   --lh-h4:      1.4;
+  --fs-body:      15px;   --lh-body:    1.55;
+  --fs-body-sm:   13px;   --lh-body-sm: 1.5;
+  --fs-caption:   12px;   --lh-caption: 1.4;
+  --fs-overline:  11px;   --lh-overline:1.2;   --ls-overline: 0.12em;
+
+  /* Numerals — for dashboard big-stat displays */
+  --fs-stat-xl:   56px;
+  --fs-stat-lg:   40px;
+  --fs-stat-md:   28px;
+  --fs-stat-sm:   22px;
+
+  /* ========== SPACING ========== */
+  --space-0:  0;
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* ========== RADII ========== */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
+  --border-radius-xl: 16px;
+  --border-radius-pill: 999px;
+
+  /* ========== SHADOWS (subtle, print-like) ========== */
+  --shadow-sm: 0 1px 2px rgba(27, 27, 24, 0.04);
+  --shadow-md: 0 2px 8px rgba(27, 27, 24, 0.06);
+  --shadow-lg: 0 8px 24px rgba(27, 27, 24, 0.08);
+
+  /* ========== MOTION ========== */
+  --ease-standard: cubic-bezier(0.4, 0.0, 0.2, 1);
+  --ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1);
+  --dur-fast:      120ms;
+  --dur-base:      200ms;
+  --dur-slow:      320ms;
+}
+
+/* ============================================================
+   SEMANTIC TYPE CLASSES — reusable text styles
+   ============================================================ */
+
+.arrc-display {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.arrc-h1 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h1);
+  line-height: var(--lh-h1);
+  letter-spacing: var(--ls-h1);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.arrc-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-h2);
+  letter-spacing: var(--ls-h2);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.arrc-h3 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-h3);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.arrc-h4 {
+  font-family: var(--font-sans);
+  font-size: var(--fs-h4);
+  line-height: var(--lh-h4);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.arrc-body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  font-weight: 400;
+  color: var(--color-text-primary);
+}
+
+.arrc-body-sm {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body-sm);
+  line-height: var(--lh-body-sm);
+  color: var(--color-text-secondary);
+}
+
+.arrc-caption {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: var(--lh-caption);
+  color: var(--color-text-tertiary);
+}
+
+.arrc-overline {
+  font-family: var(--font-sans);
+  font-size: var(--fs-overline);
+  line-height: var(--lh-overline);
+  letter-spacing: var(--ls-overline);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--color-text-secondary);
+}
+
+.arrc-stat {
+  font-family: var(--font-serif);
+  font-feature-settings: 'lnum', 'tnum';
+  font-weight: 500;
+  line-height: 1;
+  color: var(--color-text-primary);
+}
+
+.arrc-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body-sm);
+}
+
+/* ============================================================
+   BASE RESETS (opt-in via .arrc-root)
+   ============================================================ */
+
+.arrc-root {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  color: var(--color-text-primary);
+  background: var(--color-background-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.arrc-root h1, .arrc-root h2 { font-family: var(--font-serif); }

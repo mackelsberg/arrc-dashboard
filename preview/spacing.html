@@ -1,0 +1,32 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Spacing</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); }
+  .card { width:700px; padding: 16px 24px; box-sizing:border-box; }
+  .row { display:flex; align-items:flex-end; gap: 14px; }
+  .col { display:flex; flex-direction:column; align-items:center; gap: 6px; }
+  .bar { background: var(--arrc-navy); width: 18px; }
+  .n { font-family: var(--font-mono); font-size: 10px; color: var(--color-text-tertiary); }
+  .label { font-size: 10px; letter-spacing: 0.14em; text-transform:uppercase; color: var(--color-text-tertiary); font-weight:600; margin-bottom: 12px; }
+</style></head>
+<body>
+<div class="card">
+  <div class="label">Spacing scale · 4-pt grid</div>
+  <div class="row">
+    <div class="col"><div class="bar" style="height: 4px"></div><span class="n">1 · 4</span></div>
+    <div class="col"><div class="bar" style="height: 8px"></div><span class="n">2 · 8</span></div>
+    <div class="col"><div class="bar" style="height: 12px"></div><span class="n">3 · 12</span></div>
+    <div class="col"><div class="bar" style="height: 16px"></div><span class="n">4 · 16</span></div>
+    <div class="col"><div class="bar" style="height: 20px"></div><span class="n">5 · 20</span></div>
+    <div class="col"><div class="bar" style="height: 24px"></div><span class="n">6 · 24</span></div>
+    <div class="col"><div class="bar" style="height: 32px"></div><span class="n">8 · 32</span></div>
+    <div class="col"><div class="bar" style="height: 40px"></div><span class="n">10 · 40</span></div>
+    <div class="col"><div class="bar" style="height: 48px"></div><span class="n">12 · 48</span></div>
+    <div class="col"><div class="bar" style="height: 64px"></div><span class="n">16 · 64</span></div>
+    <div class="col"><div class="bar" style="height: 80px"></div><span class="n">20 · 80</span></div>
+  </div>
+</div>
+</body></html>

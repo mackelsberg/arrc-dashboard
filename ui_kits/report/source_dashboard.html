@@ -1,0 +1,154 @@
+<h2 class="sr-only">ARRC year one dashboard showing research funding, network reach, events, and funding sources</h2>
+
+<div style="padding: 0.5rem 0 0.25rem;">
+  <div style="font-size: 18px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px;">ARRC year one</div>
+  <div style="font-size: 13px; color: var(--color-text-secondary);">April 2025 to April 2026</div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 1.25rem 0;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Funded projects</div>
+    <div style="font-size: 28px; font-weight: 500; line-height: 1;">17</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Funding secured</div>
+    <div style="font-size: 28px; font-weight: 500; line-height: 1;">$230K</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Researchers</div>
+    <div style="font-size: 28px; font-weight: 500; line-height: 1;">273</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem;">
+    <div style="font-size: 13px; color: var(--color-text-secondary); margin-bottom: 6px;">Institutions</div>
+    <div style="font-size: 28px; font-weight: 500; line-height: 1;">107</div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 0 0 1.5rem;">
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Founding member schools</div>
+    <div style="font-size: 22px; font-weight: 500; line-height: 1;">13</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Aligned partner orgs</div>
+    <div style="font-size: 22px; font-weight: 500; line-height: 1;">9</div>
+  </div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+    <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Exit survey partners</div>
+    <div style="font-size: 22px; font-weight: 500; line-height: 1;">7</div>
+  </div>
+</div>
+
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+  <div>
+    <div style="font-size: 14px; font-weight: 500; margin-bottom: 12px; color: var(--color-text-primary);">Research pipeline</div>
+    <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 1rem 1.25rem; height: 188px; display: flex; flex-direction: column; justify-content: center;">
+      <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+        <span style="font-size: 32px; font-weight: 500; line-height: 1;">48</span>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">proposals received</span>
+      </div>
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 14px;">across W&amp;E, GC, and SSI</div>
+      <div style="display: flex; align-items: baseline; gap: 10px; margin-bottom: 4px;">
+        <span style="font-size: 32px; font-weight: 500; line-height: 1; color: #534AB7;">17</span>
+        <span style="font-size: 13px; color: var(--color-text-secondary);">projects funded</span>
+      </div>
+      <div style="font-size: 12px; color: var(--color-text-secondary);">35% selection rate</div>
+    </div>
+  </div>
+  <div>
+    <div style="font-size: 14px; font-weight: 500; margin-bottom: 12px; color: var(--color-text-primary);">Funding sources</div>
+    <div style="position: relative; width: 100%; height: 188px;">
+      <canvas id="fundingChart" role="img" aria-label="Donut chart of funding sources: Henry Luce Foundation $100K, Founding member schools paid $120K, Founding member schools pending $10K. Total $230K.">Henry Luce Foundation $100K. Founding member schools $130K.</canvas>
+    </div>
+  </div>
+</div>
+
+<div style="margin-bottom: 1.5rem;">
+  <div style="font-size: 14px; font-weight: 500; margin-bottom: 12px;">Convenings and reach</div>
+  <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">CoP meetings</div>
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <div style="font-size: 22px; font-weight: 500; line-height: 1;">5</div>
+        <div style="font-size: 12px; color: var(--color-text-secondary);">across W&amp;E and GC</div>
+      </div>
+    </div>
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Webinars</div>
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <div style="font-size: 22px; font-weight: 500; line-height: 1;">2</div>
+        <div style="font-size: 12px; color: var(--color-text-secondary);">40+ attendees each</div>
+      </div>
+    </div>
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Conference presentations</div>
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <div style="font-size: 22px; font-weight: 500; line-height: 1;">2</div>
+        <div style="font-size: 12px; color: var(--color-text-secondary);">ASPA, Democracy Forward</div>
+      </div>
+    </div>
+    <div style="background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem;">
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 4px;">Newsletter issues</div>
+      <div style="display: flex; align-items: baseline; gap: 8px;">
+        <div style="font-size: 22px; font-weight: 500; line-height: 1;">1</div>
+        <div style="font-size: 12px; color: var(--color-text-secondary);">Issue 2 in production</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <div style="font-size: 14px; font-weight: 500; margin-bottom: 12px;">Upcoming milestones</div>
+  <div style="background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 0.875rem 1rem; font-size: 13px; color: var(--color-text-secondary); line-height: 1.7;">
+    <div style="display: flex; justify-content: space-between;"><span>May 11, 2026</span><span style="color: var(--color-text-primary);">Draft Federal Exit Survey report</span></div>
+    <div style="display: flex; justify-content: space-between;"><span>May 31, 2026</span><span style="color: var(--color-text-primary);">W&amp;E research deliverables</span></div>
+    <div style="display: flex; justify-content: space-between;"><span>Jun 4&ndash;6, 2026</span><span style="color: var(--color-text-primary);">Public Management Research Conference</span></div>
+    <div style="display: flex; justify-content: space-between;"><span>Aug 30, 2026</span><span style="color: var(--color-text-primary);">GC research deliverables</span></div>
+    <div style="display: flex; justify-content: space-between;"><span>Sep 30&ndash;Oct 2, 2026</span><span style="color: var(--color-text-primary);">NASPAA Global Conference</span></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const textColor = isDark ? '#C2C0B6' : '#444441';
+
+new Chart(document.getElementById('fundingChart'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Henry Luce Foundation', 'Founding members (paid)', 'Founding members (pending)'],
+    datasets: [{
+      data: [100, 120, 10],
+      backgroundColor: ['#1D9E75', '#5DCAA5', '#9FE1CB'],
+      borderWidth: 0
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '62%',
+    plugins: {
+      legend: {
+        position: 'bottom',
+        labels: {
+          color: textColor,
+          boxWidth: 10,
+          boxHeight: 10,
+          font: { size: 12 },
+          padding: 8,
+          generateLabels: (chart) => {
+            const data = chart.data;
+            return data.labels.map((label, i) => ({
+              text: label + ' $' + data.datasets[0].data[i] + 'K',
+              fillStyle: data.datasets[0].backgroundColor[i],
+              strokeStyle: data.datasets[0].backgroundColor[i],
+              lineWidth: 0,
+              index: i
+            }));
+          }
+        }
+      }
+    }
+  }
+});
+</script>

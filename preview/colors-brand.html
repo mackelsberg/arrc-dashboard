@@ -1,0 +1,26 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Brand colors</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); color: var(--color-text-primary); }
+  .card { width:700px; padding: 20px 24px; box-sizing:border-box; }
+  .row { display:grid; grid-template-columns: repeat(6, 1fr); gap:12px; }
+  .sw { border-radius: 8px; height: 78px; display:flex; flex-direction:column; justify-content:flex-end; padding: 8px 10px; color:#fff; }
+  .sw .name { font-size: 11px; font-weight:600; letter-spacing:0.02em; }
+  .sw .hex { font-family: var(--font-mono); font-size: 11px; opacity:.8; }
+  .sw.light { color: var(--arrc-ink-900); }
+</style></head>
+<body>
+<div class="card">
+  <div class="row">
+    <div class="sw" style="background: var(--arrc-navy-deep)"><span class="name">navy deep</span><span class="hex">#14203D</span></div>
+    <div class="sw" style="background: var(--arrc-navy)"><span class="name">navy</span><span class="hex">#1E2A4A</span></div>
+    <div class="sw" style="background: var(--arrc-navy-soft)"><span class="name">navy soft</span><span class="hex">#334266</span></div>
+    <div class="sw" style="background: var(--arrc-red-deep)"><span class="name">red deep</span><span class="hex">#A02821</span></div>
+    <div class="sw" style="background: var(--arrc-red)"><span class="name">red</span><span class="hex">#C9342B</span></div>
+    <div class="sw" style="background: var(--arrc-red-soft)"><span class="name">red soft</span><span class="hex">#E05A4F</span></div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>ARRC · Year One Report</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<style>
+  html, body { margin:0; padding:0; background: var(--arrc-paper); color: var(--color-text-primary); font-family: var(--font-sans); -webkit-font-smoothing: antialiased; }
+  .page { max-width: 980px; margin: 40px auto; background: var(--arrc-paper); padding: 48px 56px 56px; box-sizing: border-box; }
+
+  /* ---------- Masthead ---------- */
+  .mast { padding-bottom: 24px; border-bottom: 2px solid var(--arrc-navy); }
+  .mast .brand img { height: 148px; width: auto; display: block; }
+  .mast .tagstrip { display: flex; justify-content: space-between; align-items: baseline; margin-top: 20px; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--arrc-navy-soft); font-weight: 600; }
+  .mast .tagstrip .pill { background: var(--arrc-navy); color: #fff; padding: 6px 14px; border-radius: 999px; letter-spacing: 0.14em; }
+
+  /* ---------- Title block ---------- */
+  .title { margin-top: 28px; display:grid; grid-template-columns: 1fr 280px; gap: 40px; align-items: end; }
+  .title h1 { font-family: var(--font-serif); font-weight: 600; font-size: 52px; line-height: 1.03; letter-spacing: -0.02em; margin: 0 0 8px; color: var(--arrc-navy); }
+  .title h1 em { font-style: italic; color: var(--arrc-red); font-weight: 600; }
+  .title .dates { font-size: 13px; color: var(--color-text-secondary); letter-spacing: 0.02em; }
+  .title .lede { font-family: var(--font-serif); font-size: 16px; line-height: 1.5; color: var(--color-text-secondary); font-style: italic; }
+
+  /* ---------- Section heads ---------- */
+  .sec { margin-top: 40px; }
+  .sec-head { display:flex; align-items: baseline; gap: 12px; margin-bottom: 16px; }
+  .sec-head .num { font-family: var(--font-serif); font-weight: 600; font-size: 14px; color: var(--arrc-red); letter-spacing: 0.04em; }
+  .sec-head h2 { font-family: var(--font-serif); font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--arrc-navy); margin: 0; }
+  .sec-head .rule { flex: 1; height: 1px; background: var(--arrc-ink-200); transform: translateY(-4px); }
+
+  /* ---------- KPI row ---------- */
+  .kpis { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+  .kpi { background: var(--arrc-paper-2); border-radius: 8px; padding: 16px 18px; }
+  .kpi .k { font-size: 11px; letter-spacing: 0.06em; color: var(--color-text-secondary); text-transform: uppercase; font-weight: 600; margin-bottom: 10px; }
+  .kpi .v { font-family: var(--font-serif); font-weight: 500; font-size: 40px; line-height: 1; color: var(--color-text-primary); font-feature-settings: 'lnum', 'tnum'; }
+  .kpi.emph .v { color: var(--arrc-purple); }
+
+  .kpis-sub { display:grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-top: 10px; }
+  .kpis-sub--solo { grid-template-columns: 1fr; }
+  .kpis-sub--solo .kpi-sub { display:flex; align-items: baseline; justify-content: space-between; padding: 14px 20px; }
+  .kpis-sub--solo .kpi-sub .k { margin-bottom: 0; }
+  .kpi-sub { background: var(--arrc-paper-2); border-radius: 8px; padding: 12px 16px; }
+  .kpi-sub .k { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; }
+  .kpi-sub .v { font-family: var(--font-serif); font-weight: 500; font-size: 24px; line-height: 1; font-feature-settings: 'lnum','tnum'; }
+
+  /* ---------- Pipeline + Donut ---------- */
+  .two { display:grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .panel { background: var(--arrc-paper-2); border-radius: 8px; padding: 18px 22px; }
+  .panel-label { font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-text-secondary); font-weight: 600; margin-bottom: 14px; }
+  .pipe .row { display:flex; align-items: center; gap: 14px; margin-bottom: 10px; }
+  .pipe .num { font-family: var(--font-serif); font-weight: 500; font-size: 42px; line-height: 1; font-feature-settings: 'lnum','tnum'; flex-shrink: 0; min-width: 56px; }
+  .pipe .num.emph { color: var(--arrc-purple); }
+  .pipe .rowtext { display:flex; flex-direction: column; gap: 2px; line-height: 1.2; }
+  .pipe .lbl { font-size: 14px; color: var(--color-text-primary); }
+  .pipe .sub { font-size: 12px; color: var(--color-text-tertiary); }
+  .pipe .bar { height: 8px; border-radius: 999px; background: var(--arrc-ink-100); position: relative; overflow: hidden; margin-top: 10px; }
+  .pipe .bar .fill { height: 100%; background: var(--arrc-purple); width: 35.4%; border-radius: 999px; }
+  .pipe .bar-label { display:flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; color: var(--color-text-tertiary); margin-top: 4px; }
+
+  .donut-wrap { display:grid; grid-template-columns: 130px 1fr; gap: 16px; align-items: center; }
+  .donut { width: 130px; height: 130px; }
+  .legend { font-size: 12px; color: var(--color-text-secondary); line-height: 1.8; margin: 0; padding: 0; list-style: none; }
+  .legend li { display:grid; grid-template-columns: 12px 1fr auto; gap: 8px; align-items: center; }
+  .legend .d { width: 10px; height: 10px; border-radius: 2px; }
+  .legend .v { color: var(--color-text-primary); font-family: var(--font-mono); font-size: 11px; }
+  .total { margin-top: 12px; padding-top: 10px; border-top: 0.5px solid var(--arrc-ink-200); font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 0.04em; display:flex; justify-content: space-between; }
+  .total b { color: var(--color-text-primary); font-family: var(--font-serif); font-size: 14px; font-weight: 600; }
+
+  /* ---------- Map ---------- */
+  .map-wrap { background: #fff; border: 0.5px solid var(--arrc-ink-200); border-radius: 8px; padding: 20px 24px 16px; }
+  .map-legend { display:flex; gap: 22px; align-items: center; font-size: 12px; color: var(--color-text-secondary); margin-bottom: 8px; flex-wrap: wrap; }
+  .map-legend .it { display:flex; align-items:center; gap: 8px; }
+  .map-legend .dot-f { width: 11px; height: 11px; border-radius: 50%; background: var(--arrc-purple); }
+  .map-legend .dot-p { width: 11px; height: 11px; border-radius: 50%; background: var(--arrc-orange); }
+  .map-legend .dot-b { width: 11px; height: 11px; border-radius: 50%; background: linear-gradient(90deg, var(--arrc-purple) 50%, var(--arrc-orange) 50%); }
+  .map-legend .note { color: var(--color-text-tertiary); margin-left: auto; font-size: 11px; letter-spacing: 0.04em; }
+
+  #map { width: 100%; }
+  #map svg { display: block; }
+  #tooltip { position: fixed; pointer-events: none; background: #fff; border: 0.5px solid var(--arrc-ink-200); border-radius: 8px; padding: 8px 12px; font-size: 12px; color: var(--color-text-primary); opacity: 0; transition: opacity 150ms; z-index: 1000; max-width: 280px; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+
+  .reach-stats { display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px; }
+  .reach-stats .kpi-sub { background: var(--arrc-paper-2); }
+
+  /* ---------- Convenings ---------- */
+  .conv { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .conv .tile { background: #fff; border: 0.5px solid var(--arrc-ink-200); border-radius: 8px; padding: 14px 16px; }
+  .conv .tile .k { font-size: 11px; color: var(--color-text-secondary); margin-bottom: 6px; }
+  .conv .tile .v { font-family: var(--font-serif); font-weight: 500; font-size: 26px; line-height: 1; font-feature-settings: 'lnum','tnum'; }
+  .conv .tile .n { font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px; }
+
+  /* ---------- Milestones ---------- */
+  .ms { background: var(--arrc-paper-2); border-radius: 8px; padding: 6px 22px; }
+  .ms .row { display:grid; grid-template-columns: 160px 1fr; gap: 20px; padding: 10px 0; border-bottom: 0.5px solid var(--arrc-ink-200); font-size: 13px; }
+  .ms .row:last-child { border: 0; }
+  .ms .row .d { color: var(--color-text-secondary); font-family: var(--font-mono); font-size: 12px; }
+  .ms .row .t { color: var(--color-text-primary); }
+
+  /* ---------- Footer ---------- */
+  footer { margin-top: 48px; padding-top: 16px; border-top: 1px solid var(--arrc-ink-200); display:flex; justify-content: space-between; font-size: 11px; color: var(--color-text-tertiary); letter-spacing: 0.04em; }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ======= MASTHEAD ======= -->
+  <header class="mast">
+    <div class="brand">
+      <img src="../../assets/arrc-logo-with-name.png" alt="ARRC · Accountability &amp; Reform Research Consortium">
+    </div>
+    <div class="tagstrip">
+      <span class="pill">Year One Achievements</span>
+      <span>April 2025 — April 2026</span>
+    </div>
+  </header>
+
+  <!-- ======= TITLE ======= -->
+  <section class="title">
+    <div>
+      <h1>Year one,<br>by the <em>numbers</em>.</h1>
+    </div>
+    <div class="lede">
+      From an April 2025 grant, ARRC built a national research consortium spanning 16 states, funded 17 projects on federal workforce change, and grew a contact network of 273 researchers — all in twelve months.
+    </div>
+  </section>
+
+  <!-- ======= SECTION 01 — Headline KPIs ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">01</span><h2>Headline results</h2><span class="rule"></span></div>
+    <div class="kpis">
+      <div class="kpi emph"><div class="k">Funded projects</div><div class="v">17</div></div>
+      <div class="kpi"><div class="k">Funding secured</div><div class="v">$230K</div></div>
+      <div class="kpi"><div class="k">Researchers in network</div><div class="v">273</div></div>
+      <div class="kpi"><div class="k">Institutions</div><div class="v">107</div></div>
+      <div class="kpi"><div class="k">Founding member schools</div><div class="v">13</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 02 — Pipeline + Funding ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">02</span><h2>Pipeline &amp; funding</h2><span class="rule"></span></div>
+    <div class="two">
+      <div class="panel pipe">
+        <div class="panel-label">Research pipeline</div>
+        <div class="row">
+          <span class="num">48</span>
+          <span class="rowtext"><span class="lbl">proposals received</span><span class="sub">across W&amp;E, GC, and SSI</span></span>
+        </div>
+        <div class="row">
+          <span class="num emph">17</span>
+          <span class="rowtext"><span class="lbl">projects funded</span><span class="sub">35% selection rate</span></span>
+        </div>
+        <div class="bar"><div class="fill"></div></div>
+        <div class="bar-label"><span>0</span><span>35%</span><span>100%</span></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Funding sources</div>
+        <div class="donut-wrap">
+          <svg class="donut" viewBox="0 0 42 42">
+            <!-- Luce 100/230 = 43.5% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal)" stroke-width="7" stroke-dasharray="43.5 56.5" stroke-dashoffset="25"/>
+            <!-- Paid 120/230 = 52.2% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-mid)" stroke-width="7" stroke-dasharray="52.2 47.8" stroke-dashoffset="-18.5"/>
+            <!-- Pending 10/230 = 4.3% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-soft)" stroke-width="7" stroke-dasharray="4.3 95.7" stroke-dashoffset="-70.7"/>
+          </svg>
+          <ul class="legend">
+            <li><span class="d" style="background: var(--arrc-teal)"></span><span>Henry Luce Foundation</span><span class="v">$100K</span></li>
+            <li><span class="d" style="background: var(--arrc-teal-mid)"></span><span>Founding members (paid)</span><span class="v">$120K</span></li>
+            <li><span class="d" style="background: var(--arrc-teal-soft)"></span><span>Founding members (pending)</span><span class="v">$10K</span></li>
+          </ul>
+        </div>
+        <div class="total"><span>TOTAL SECURED</span><b>$230,000</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 03 — Institutional reach map ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">03</span><h2>Institutional reach</h2><span class="rule"></span></div>
+    <div class="map-wrap">
+      <div class="map-legend">
+        <span class="it"><span class="dot-f"></span>Founding member</span>
+        <span class="it"><span class="dot-p"></span>Funded project host</span>
+        <span class="it"><span class="dot-b"></span>Both</span>
+        <span class="note">Hover any dot for details</span>
+      </div>
+      <div id="map"></div>
+    </div>
+    <div class="reach-stats">
+      <div class="kpi-sub"><div class="k">Founding member schools</div><div class="v">13</div></div>
+      <div class="kpi-sub"><div class="k">Host institutions</div><div class="v">19</div></div>
+      <div class="kpi-sub"><div class="k">States + DC</div><div class="v">16 + DC</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 04 — Convenings ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">04</span><h2>Convenings &amp; reach</h2><span class="rule"></span></div>
+    <div class="conv">
+      <div class="tile"><div class="k">CoP meetings</div><div class="v">5</div><div class="n">across W&amp;E and GC</div></div>
+      <div class="tile"><div class="k">Webinars</div><div class="v">2</div><div class="n">40+ attendees each</div></div>
+      <div class="tile"><div class="k">Conference presentations</div><div class="v">2</div><div class="n">ASPA, Democracy Forward</div></div>
+      <div class="tile"><div class="k">Newsletter issues</div><div class="v">2</div><div class="n">monthly cadence</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 05 — Upcoming ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">05</span><h2>Upcoming milestones</h2><span class="rule"></span></div>
+    <div class="ms">
+      <div class="row"><div class="d">May 11, 2026</div><div class="t">Draft Federal Exit Survey report</div></div>
+      <div class="row"><div class="d">May 31, 2026</div><div class="t">W&amp;E research deliverables</div></div>
+      <div class="row"><div class="d">Jun 4–6, 2026</div><div class="t">Public Management Research Conference</div></div>
+      <div class="row"><div class="d">Aug 30, 2026</div><div class="t">GC research deliverables</div></div>
+      <div class="row"><div class="d">Sep 30–Oct 2, 2026</div><div class="t">NASPAA Global Conference</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>ARRC · Accountability &amp; Reform Research Consortium</span>
+    <span>Year one · Apr 2025 → Apr 2026</span>
+  </footer>
+</div>
+
+<div id="tooltip"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const points = [
+  { lat: 37.8719, lon: -122.2585, institutions: [{ name: 'UC Berkeley', founding: true, funded: [] }] },
+  { lat: 32.7757, lon: -117.0719, institutions: [{ name: 'San Diego State University', founding: false, funded: ['Sungjin Lee'] }] },
+  { lat: 40.4444, lon: -79.9608, institutions: [{ name: 'University of Pittsburgh', founding: true, funded: [] }] },
+  { lat: 38.9076, lon: -77.0723, cluster: 'Washington, D.C.', institutions: [
+    { name: 'George Washington University', founding: true, funded: [] },
+    { name: 'American University', founding: true, funded: [] },
+    { name: 'Georgetown University', founding: false, funded: ['Mark Richardson'] }
+  ]},
+  { lat: 33.7756, lon: -84.3900, cluster: 'Atlanta, GA', institutions: [
+    { name: 'Georgia State University', founding: true, funded: ['Jung Won (Leo) Choi'] },
+    { name: 'Georgia Tech', founding: false, funded: ['Jung Won (Leo) Choi'] }
+  ]},
+  { lat: 33.9480, lon: -83.3773, institutions: [{ name: 'University of Georgia', founding: true, funded: ['L. Jason Anastasopoulos'] }] },
+  { lat: 30.2849, lon: -97.7341, institutions: [{ name: 'UT Austin', founding: true, funded: ['Gordon Abner'] }] },
+  { lat: 30.6120, lon: -96.3405, institutions: [{ name: 'Texas A&M University', founding: false, funded: ['M. Blake Emidy'] }] },
+  { lat: 32.7297, lon: -97.1131, institutions: [{ name: 'UT Arlington', founding: false, funded: ['Evan Mistur'] }] },
+  { lat: 33.4242, lon: -111.9281, cluster: 'Arizona State University', institutions: [
+    { name: 'Arizona State University (Howell)', founding: true, funded: ['Anthony Howell — Innovation Governance Capacity'] },
+    { name: 'Arizona State University (Robinson)', founding: true, funded: ['Scott E. Robinson — Local Emergency Management'] }
+  ]},
+  { lat: 38.9543, lon: -95.2558, institutions: [{ name: 'University of Kansas', founding: true, funded: ['Zach Mohr'] }] },
+  { lat: 40.7420, lon: -74.1724, institutions: [{ name: 'Rutgers-Newark', founding: true, funded: ['Greg Porumbescu'] }] },
+  { lat: 42.2780, lon: -83.7382, institutions: [{ name: 'University of Michigan', founding: true, funded: ['Don Moynihan'] }] },
+  { lat: 41.5017, lon: -81.6750, institutions: [{ name: 'Cleveland State University', founding: true, funded: [] }] },
+  { lat: 40.0067, lon: -83.0305, institutions: [{ name: 'Ohio State / Impact Project', founding: false, funded: ['Abby André'] }] },
+  { lat: 42.6862, lon: -73.8242, institutions: [{ name: 'SUNY Albany', founding: true, funded: ['Hongseok Lee'] }] },
+  { lat: 28.6024, lon: -81.2001, institutions: [{ name: 'University of Central Florida', founding: false, funded: ['Thomas Bryer'] }] },
+  { lat: 35.3075, lon: -80.7331, institutions: [{ name: 'UNC Charlotte', founding: false, funded: ['Jaclyn Piatak'] }] },
+  { lat: 41.8708, lon: -87.6505, institutions: [{ name: 'University of Illinois Chicago', founding: false, funded: ['Kate Albrecht'] }] },
+  { lat: 30.4133, lon: -91.1800, institutions: [{ name: 'LSU', founding: false, funded: ['Anmol Soni'] }] },
+  { lat: 47.6553, lon: -122.3035, institutions: [{ name: 'University of Washington', founding: false, funded: ['Benjamin M. Brunjes'] }] },
+  { lat: 56.8094, lon: -132.9569, institutions: [{ name: 'Inside Passage Field Studies', founding: false, funded: ['Erin Steinkruger'] }] }
+];
+
+const PURPLE = getComputedStyle(document.documentElement).getPropertyValue('--arrc-purple').trim() || '#534AB7';
+const ORANGE = getComputedStyle(document.documentElement).getPropertyValue('--arrc-orange').trim() || '#D85A30';
+const LAND   = getComputedStyle(document.documentElement).getPropertyValue('--arrc-paper-2').trim() || '#EDE9DC';
+const STROKE = getComputedStyle(document.documentElement).getPropertyValue('--arrc-ink-300').trim() || '#B4B2A9';
+const PAPER  = getComputedStyle(document.documentElement).getPropertyValue('--arrc-paper').trim() || '#F5F2E9';
+
+const width = 860, height = 500;
+const svg = d3.select('#map').append('svg')
+  .attr('viewBox', `0 0 ${width} ${height}`)
+  .attr('width', '100%').style('display', 'block');
+
+const projection = d3.geoAlbersUsa().scale(1040).translate([width/2, height/2]);
+const path = d3.geoPath(projection);
+const tooltip = document.getElementById('tooltip');
+
+function getDotType(inst) {
+  const f = inst.founding, p = inst.funded.length > 0;
+  if (f && p) return 'both';
+  if (f) return 'founding';
+  return 'funded';
+}
+function getClusterType(institutions) {
+  const f = institutions.some(i => i.founding);
+  const p = institutions.some(i => i.funded.length > 0);
+  if (f && p) return 'both';
+  if (f) return 'founding';
+  return 'funded';
+}
+
+d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
+  svg.append('g').selectAll('path')
+    .data(topojson.feature(us, us.objects.states).features)
+    .join('path').attr('d', path)
+    .attr('fill', LAND).attr('stroke', STROKE).attr('stroke-width', 0.5);
+
+  const groups = svg.append('g').selectAll('g')
+    .data(points.filter(d => projection([d.lon, d.lat]) !== null))
+    .join('g')
+    .attr('transform', d => {
+      const p = projection([d.lon, d.lat]); return p ? `translate(${p[0]},${p[1]})` : null;
+    })
+    .style('cursor', 'pointer');
+
+  groups.each(function(d){
+    const g = d3.select(this);
+    const isCluster = d.institutions.length > 1;
+    if (isCluster) {
+      const type = getClusterType(d.institutions);
+      const r = 12;
+      if (type === 'both') {
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE).attr('stroke', PAPER).attr('stroke-width', 1.5);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE).attr('stroke', PAPER).attr('stroke-width', 1.5);
+      } else {
+        g.append('circle').attr('r', r).attr('fill', type === 'founding' ? PURPLE : ORANGE).attr('stroke', PAPER).attr('stroke-width', 1.5);
+      }
+      g.append('text').attr('text-anchor','middle').attr('dominant-baseline','central')
+        .attr('fill','#fff').attr('font-size','11px').attr('font-weight','600')
+        .attr('pointer-events','none').text(d.institutions.length);
+    } else {
+      const inst = d.institutions[0];
+      const type = getDotType(inst);
+      const r = 6.5;
+      if (type === 'both') {
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE).attr('stroke', PAPER).attr('stroke-width', 1);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE).attr('stroke', PAPER).attr('stroke-width', 1);
+      } else {
+        g.append('circle').attr('r', r).attr('fill', type === 'founding' ? PURPLE : ORANGE).attr('stroke', PAPER).attr('stroke-width', 1);
+      }
+    }
+  });
+
+  groups.on('mouseenter', function(event, d){
+    let html = '';
+    if (d.cluster) {
+      html = '<strong>' + d.cluster + '</strong><br>';
+      html += d.institutions.map(i => {
+        const roles = [];
+        if (i.founding) roles.push('founding member');
+        if (i.funded.length > 0) roles.push('funded: ' + i.funded.join(', '));
+        return '· ' + i.name.replace(/ \(.+?\)/, '') + ' <span style="color:#6B6A63">— ' + roles.join('; ') + '</span>';
+      }).join('<br>');
+    } else {
+      const inst = d.institutions[0];
+      const roles = [];
+      if (inst.founding) roles.push('Founding member');
+      if (inst.funded.length > 0) roles.push('Funded: ' + inst.funded.join(', '));
+      html = '<strong>' + inst.name + '</strong><br>' + roles.join('<br>');
+    }
+    tooltip.innerHTML = html;
+    tooltip.style.opacity = '1';
+  })
+  .on('mousemove', function(event){
+    const off = 14, tw = tooltip.offsetWidth, th = tooltip.offsetHeight;
+    let x = event.clientX + off, y = event.clientY + off;
+    if (x + tw > window.innerWidth - 10) x = event.clientX - tw - off;
+    if (y + th > window.innerHeight - 10) y = event.clientY - th - off;
+    tooltip.style.left = x + 'px';
+    tooltip.style.top = y + 'px';
+  })
+  .on('mouseleave', function(){ tooltip.style.opacity = '0'; });
+});
+</script>
+</body>
+</html>

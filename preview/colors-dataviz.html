@@ -1,0 +1,43 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Dataviz palette</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); color: var(--color-text-primary); }
+  .card { width:700px; padding: 16px 24px; box-sizing:border-box; }
+  .group { margin-bottom: 10px; }
+  .label { font-size: 10px; letter-spacing: 0.12em; text-transform:uppercase; color: var(--color-text-tertiary); margin-bottom: 6px; font-weight:600; }
+  .row { display:grid; grid-template-columns: repeat(3, 1fr); gap:10px; }
+  .sw { border-radius: 6px; height: 44px; display:flex; align-items:center; padding: 0 12px; color:#fff; font-size: 11px; font-weight:600; justify-content:space-between; }
+  .sw .hex { font-family: var(--font-mono); font-weight:400; opacity:.85; }
+  .sw.ink { color: var(--arrc-ink-900); }
+</style></head>
+<body>
+<div class="card">
+  <div class="group">
+    <div class="label">Purple · funded projects</div>
+    <div class="row">
+      <div class="sw" style="background: var(--arrc-purple)">purple<span class="hex">#534AB7</span></div>
+      <div class="sw" style="background: var(--arrc-purple-soft)">soft<span class="hex">#8A84D0</span></div>
+      <div class="sw ink" style="background: var(--arrc-purple-tint)">tint<span class="hex">#E2E0F3</span></div>
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">Orange · host institutions</div>
+    <div class="row">
+      <div class="sw" style="background: var(--arrc-orange)">orange<span class="hex">#D85A30</span></div>
+      <div class="sw" style="background: var(--arrc-orange-soft)">soft<span class="hex">#E88A6B</span></div>
+      <div class="sw ink" style="background: var(--arrc-orange-tint)">tint<span class="hex">#F8DDD1</span></div>
+    </div>
+  </div>
+  <div class="group">
+    <div class="label">Teal · funding flows</div>
+    <div class="row">
+      <div class="sw" style="background: var(--arrc-teal)">teal<span class="hex">#1D9E75</span></div>
+      <div class="sw" style="background: var(--arrc-teal-mid)">mid<span class="hex">#5DCAA5</span></div>
+      <div class="sw" style="background: var(--arrc-teal-soft)">soft<span class="hex">#9FE1CB</span></div>
+    </div>
+  </div>
+</div>
+</body></html>

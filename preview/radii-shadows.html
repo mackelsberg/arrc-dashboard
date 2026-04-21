@@ -1,0 +1,35 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Radii &amp; shadows</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); }
+  .card { width:700px; padding: 18px 24px; box-sizing:border-box; display:grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .col-title { font-size: 10px; letter-spacing: 0.14em; text-transform:uppercase; color: var(--color-text-tertiary); font-weight:600; margin-bottom: 10px; }
+  .row { display:flex; gap:10px; }
+  .chip { width: 54px; height: 54px; background: #fff; border: 0.5px solid var(--arrc-ink-200); display:flex; align-items:flex-end; justify-content:center; font-family: var(--font-mono); font-size: 10px; padding-bottom: 4px; color: var(--color-text-tertiary); }
+  .sh { width: 86px; height: 58px; background: #fff; border-radius: 8px; display:flex; align-items:center; justify-content:center; font-family: var(--font-mono); font-size: 10px; color: var(--color-text-tertiary); }
+</style></head>
+<body>
+<div class="card">
+  <div>
+    <div class="col-title">Corner radii</div>
+    <div class="row">
+      <div class="chip" style="border-radius:4px">4</div>
+      <div class="chip" style="border-radius:8px">8</div>
+      <div class="chip" style="border-radius:12px">12</div>
+      <div class="chip" style="border-radius:16px">16</div>
+      <div class="chip" style="border-radius:999px">pill</div>
+    </div>
+  </div>
+  <div>
+    <div class="col-title">Shadows</div>
+    <div class="row">
+      <div class="sh" style="box-shadow: var(--shadow-sm)">sm</div>
+      <div class="sh" style="box-shadow: var(--shadow-md)">md</div>
+      <div class="sh" style="box-shadow: var(--shadow-lg)">lg</div>
+    </div>
+  </div>
+</div>
+</body></html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ARRC · Year One Achievements</title>
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Map asset UUIDs to file paths for the map.js to use
+    window.__resources = {
+      usAtlas: 'assets/53023f5b-9bcf-4347-b2f3-c79beea7962e.json'
+    };
+  </script>
+</head>
+<body>
+
+
+<div class="page">
+
+  <!-- ======= MASTHEAD ======= -->
+  <header class="mast">
+    <div class="brand">
+      <img src="assets/34770b61-743e-4de1-81a4-da22f608d10f.png" alt="ARRC · Accountability &amp; Reform Research Consortium">
+    </div>
+    <div class="tagstrip">
+      <span class="pill">Year One Achievements</span>
+      <span>April 2025 — April 2026</span>
+    </div>
+  </header>
+
+  <!-- ======= TITLE ======= -->
+  <section class="title">
+    <div>
+      <h1>Year one,<br>by the <em>numbers</em>.</h1>
+    </div>
+    <div class="lede">
+      From an April 2025 grant, ARRC built a national research consortium spanning 16 states, funded 17 projects on federal workforce change, and grew a contact network of 273 researchers — all in twelve months.
+    </div>
+  </section>
+
+  <!-- ======= SECTION 01 — Headline KPIs ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">01</span><h2>Headline results</h2><span class="rule"></span></div>
+    <div class="kpis">
+      <div class="kpi emph"><div class="k">Funded projects</div><div class="v">17</div></div>
+      <div class="kpi"><div class="k">Funding secured</div><div class="v">$230K</div></div>
+      <div class="kpi"><div class="k">Researchers in network</div><div class="v">273</div></div>
+      <div class="kpi"><div class="k">Institutions</div><div class="v">107</div></div>
+      <div class="kpi"><div class="k">Founding member schools</div><div class="v">13</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 02 — Pipeline + Funding ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">02</span><h2>Pipeline &amp; funding</h2><span class="rule"></span></div>
+    <div class="two">
+      <div class="panel pipe">
+        <div class="panel-label">Research pipeline</div>
+        <div class="row">
+          <span class="num">48</span>
+          <span class="rowtext"><span class="lbl">proposals received</span><span class="sub">across W&amp;E, GC, and SSI</span></span>
+        </div>
+        <div class="row">
+          <span class="num emph">17</span>
+          <span class="rowtext"><span class="lbl">projects funded</span><span class="sub">35% selection rate</span></span>
+        </div>
+        <div class="bar"><div class="fill"></div></div>
+        <div class="bar-label"><span>0</span><span>35%</span><span>100%</span></div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-label">Funding sources</div>
+        <div class="donut-wrap">
+          <svg class="donut" viewBox="0 0 42 42">
+            <!-- Luce 100/230 = 43.5% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal)" stroke-width="7" stroke-dasharray="43.5 56.5" stroke-dashoffset="25"></circle>
+            <!-- Paid 120/230 = 52.2% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-mid)" stroke-width="7" stroke-dasharray="52.2 47.8" stroke-dashoffset="-18.5"></circle>
+            <!-- Pending 10/230 = 4.3% -->
+            <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-soft)" stroke-width="7" stroke-dasharray="4.3 95.7" stroke-dashoffset="-70.7"></circle>
+          </svg>
+          <ul class="legend">
+            <li><span class="d" style="background: var(--arrc-teal)"></span><span>Henry Luce Foundation</span><span class="v">$100K</span></li>
+            <li><span class="d" style="background: var(--arrc-teal-mid)"></span><span>Founding members (paid)</span><span class="v">$120K</span></li>
+            <li><span class="d" style="background: var(--arrc-teal-soft)"></span><span>Founding members (pending)</span><span class="v">$10K</span></li>
+          </ul>
+        </div>
+        <div class="total"><span>TOTAL SECURED</span><b>$230,000</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 03 — Institutional reach map ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">03</span><h2>Institutional reach</h2><span class="rule"></span></div>
+    <div class="map-wrap">
+      <div class="map-legend">
+        <span class="it"><span class="dot-f"></span>Founding member</span>
+        <span class="it"><span class="dot-p"></span>Funded project host</span>
+        <span class="it"><span class="dot-b"></span>Both</span>
+        <span class="it network"><span class="dot-n"></span>Network institution</span>
+        <div style="margin-left: auto; display: flex; gap: 12px; align-items: center;">
+          <div class="map-toggle">
+            <button class="active" data-view="members">Members & hosts</button>
+            <button data-view="network">Full network</button>
+          </div>
+        </div>
+      </div>
+      <div class="map-legend-note">Hover any dot for details</div>
+      <div id="map" style="position: relative; min-height: 520px;"></div>
+      <div class="map-controls">
+        <button class="zoom-in" title="Zoom in">+</button>
+        <button class="zoom-out" title="Zoom out">−</button>
+        <button class="zoom-reset" title="Reset zoom">⊙</button>
+      </div>
+    </div>
+    <div class="reach-stats">
+      <div class="kpi-sub"><div class="k">Founding member schools</div><div class="v">13</div></div>
+      <div class="kpi-sub"><div class="k">Host institutions</div><div class="v">19</div></div>
+      <div class="kpi-sub"><div class="k">States + DC</div><div class="v">16 + DC</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 04 — Convenings ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">04</span><h2>Convenings &amp; reach</h2><span class="rule"></span></div>
+    <div class="conv">
+      <div class="tile"><div class="k">CoP meetings</div><div class="v">5</div><div class="n">across W&amp;E and GC</div></div>
+      <div class="tile"><div class="k">Webinars</div><div class="v">2</div><div class="n">40+ attendees each</div></div>
+      <div class="tile"><div class="k">Conference presentations</div><div class="v">2</div><div class="n">ASPA, Democracy Forward</div></div>
+      <div class="tile"><div class="k">Newsletter issues</div><div class="v">2</div><div class="n">monthly cadence</div></div>
+    </div>
+  </section>
+
+  <!-- ======= SECTION 05 — Upcoming ======= -->
+  <section class="sec">
+    <div class="sec-head"><span class="num">05</span><h2>Upcoming milestones</h2><span class="rule"></span></div>
+    <div class="ms">
+      <div class="row"><div class="d">May 11, 2026</div><div class="t">Draft Federal Exit Survey report</div></div>
+      <div class="row"><div class="d">May 31, 2026</div><div class="t">W&amp;E research deliverables</div></div>
+      <div class="row"><div class="d">Jun 4–6, 2026</div><div class="t">Public Management Research Conference</div></div>
+      <div class="row"><div class="d">Aug 30, 2026</div><div class="t">GC research deliverables</div></div>
+      <div class="row"><div class="d">Sep 30–Oct 2, 2026</div><div class="t">NASPAA Global Conference</div></div>
+    </div>
+  </section>
+
+  <footer>
+    <span>ARRC · Accountability &amp; Reform Research Consortium</span>
+    <span>Year one · Apr 2025 → Apr 2026</span>
+  </footer>
+</div>
+
+<div id="tooltip"></div>
+
+
+
+
+
+
+
+  <!-- D3 and TopoJSON libraries -->
+  <script src="assets/7e11a073-dcb4-4e01-82fd-d29c6e8f3b58.js"></script>
+  <script src="assets/489daeb7-84eb-410c-9119-df440ea1fff5.js"></script>
+
+  <!-- Network institutions data -->
+  <script src="network-data.js"></script>
+
+  <!-- Main app JS -->
+  <script src="map.js"></script>
+</body>
+</html>

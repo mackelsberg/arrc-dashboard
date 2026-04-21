@@ -1,0 +1,33 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Donut</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); }
+  .card { width:700px; padding: 14px 24px; box-sizing:border-box; display:grid; grid-template-columns: 180px 1fr; gap: 20px; align-items:center; }
+  .donut { width: 150px; height: 150px; }
+  .legend { font-size: 12px; color: var(--color-text-secondary); line-height:1.7; }
+  .legend li { display:flex; align-items:center; gap:8px; list-style:none; }
+  .legend ul { margin:0; padding:0; }
+  .dot { width: 10px; height:10px; border-radius:2px; display:inline-block; }
+  .val { color: var(--color-text-primary); font-family: var(--font-mono); margin-left: 4px; font-size: 11px; }
+  h4 { font-family: var(--font-sans); font-weight:600; font-size: 13px; margin: 0 0 10px; color: var(--color-text-primary); }
+</style></head>
+<body>
+<div class="card">
+  <svg class="donut" viewBox="0 0 42 42">
+    <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal)" stroke-width="7" stroke-dasharray="43.5 56.5" stroke-dashoffset="25" />
+    <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-mid)" stroke-width="7" stroke-dasharray="52.2 47.8" stroke-dashoffset="-18" />
+    <circle cx="21" cy="21" r="15.915" fill="transparent" stroke="var(--arrc-teal-soft)" stroke-width="7" stroke-dasharray="4.3 95.7" stroke-dashoffset="-70.5" />
+  </svg>
+  <div>
+    <h4>Funding sources · $230K</h4>
+    <ul class="legend">
+      <li><span class="dot" style="background: var(--arrc-teal)"></span>Henry Luce Foundation<span class="val">$100K</span></li>
+      <li><span class="dot" style="background: var(--arrc-teal-mid)"></span>Founding members (paid)<span class="val">$120K</span></li>
+      <li><span class="dot" style="background: var(--arrc-teal-soft)"></span>Founding members (pending)<span class="val">$10K</span></li>
+    </ul>
+  </div>
+</div>
+</body></html>

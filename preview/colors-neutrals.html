@@ -1,0 +1,29 @@
+<!doctype html>
+<html><head>
+<meta charset="utf-8">
+<title>Neutrals</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body { margin:0; padding:0; background: var(--arrc-paper); font-family: var(--font-sans); color: var(--color-text-primary); }
+  .card { width:700px; padding: 20px 24px; box-sizing:border-box; }
+  .grid { display:grid; grid-template-columns: repeat(8,1fr); gap: 10px; }
+  .sw { height: 90px; border-radius: 6px; display:flex; flex-direction:column; justify-content:flex-end; padding:8px; font-size: 10px; font-weight:600; line-height:1.25; }
+  .sw .hex { font-family: var(--font-mono); font-weight:400; opacity:.75; display:block; }
+  .light { color: var(--arrc-ink-900); }
+  .dark { color: #fff; }
+  .bordered { border: 1px solid rgba(0,0,0,.08); }
+</style></head>
+<body>
+<div class="card">
+  <div class="grid">
+    <div class="sw dark" style="background: var(--arrc-ink-900)">ink 900<span class="hex">#1B1B18</span></div>
+    <div class="sw dark" style="background: var(--arrc-ink-700)">ink 700<span class="hex">#444441</span></div>
+    <div class="sw dark" style="background: var(--arrc-ink-500)">ink 500<span class="hex">#6B6A63</span></div>
+    <div class="sw light" style="background: var(--arrc-ink-300)">ink 300<span class="hex">#B4B2A9</span></div>
+    <div class="sw light" style="background: var(--arrc-ink-200)">ink 200<span class="hex">#D4D0C1</span></div>
+    <div class="sw light" style="background: var(--arrc-paper-3)">paper 3<span class="hex">#E2DCC9</span></div>
+    <div class="sw light" style="background: var(--arrc-paper-2)">paper 2<span class="hex">#EDE9DC</span></div>
+    <div class="sw light bordered" style="background: var(--arrc-paper)">paper<span class="hex">#F5F2E9</span></div>
+  </div>
+</div>
+</body></html>

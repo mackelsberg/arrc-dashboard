@@ -1,0 +1,181 @@
+<h2 class="sr-only">Map of the United States showing ARRC founding member schools and institutions hosting funded research projects</h2>
+
+<div style="padding: 0.5rem 0 0.75rem;">
+  <div style="font-size: 16px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px;">ARRC institutional reach</div>
+  <div style="font-size: 13px; color: var(--color-text-secondary);">13 founding member schools and 19 institutions hosting funded research across 18 states and DC</div>
+</div>
+
+<div style="display: flex; gap: 20px; margin: 0 0 12px; font-size: 12px; color: var(--color-text-secondary); align-items: center; flex-wrap: wrap;">
+  <span style="display: flex; align-items: center; gap: 6px;">
+    <span style="width: 12px; height: 12px; border-radius: 50%; background: #534AB7;"></span>Founding member
+  </span>
+  <span style="display: flex; align-items: center; gap: 6px;">
+    <span style="width: 12px; height: 12px; border-radius: 50%; background: #D85A30;"></span>Funded project host
+  </span>
+  <span style="display: flex; align-items: center; gap: 6px;">
+    <span style="width: 12px; height: 12px; border-radius: 50%; background: linear-gradient(90deg, #534AB7 50%, #D85A30 50%);"></span>Both
+  </span>
+  <span style="color: var(--color-text-tertiary); font-size: 11px;">Hover any dot for details</span>
+</div>
+
+<div id="map" style="width: 100%; position: relative;"></div>
+
+<div id="tooltip" style="position: fixed; pointer-events: none; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: var(--border-radius-md); padding: 8px 12px; font-size: 12px; color: var(--color-text-primary); opacity: 0; transition: opacity 0.15s; z-index: 1000; max-width: 280px; line-height: 1.5; box-shadow: 0 2px 8px rgba(0,0,0,0.08);"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/3.0.2/topojson.min.js"></script>
+<script>
+const points = [
+  { lat: 37.8719, lon: -122.2585, institutions: [{ name: 'UC Berkeley', founding: true, funded: [] }] },
+  { lat: 32.7757, lon: -117.0719, institutions: [{ name: 'San Diego State University', founding: false, funded: ['Sungjin Lee'] }] },
+  { lat: 40.4444, lon: -79.9608, institutions: [{ name: 'University of Pittsburgh', founding: true, funded: [] }] },
+  { lat: 38.9076, lon: -77.0723, cluster: 'Washington, D.C.', institutions: [
+    { name: 'George Washington University', founding: true, funded: [] },
+    { name: 'American University', founding: true, funded: [] },
+    { name: 'Georgetown University', founding: false, funded: ['Mark Richardson'] }
+  ]},
+  { lat: 33.7756, lon: -84.3900, cluster: 'Atlanta, GA', institutions: [
+    { name: 'Georgia State University', founding: true, funded: ['Jung Won (Leo) Choi'] },
+    { name: 'Georgia Tech', founding: false, funded: ['Jung Won (Leo) Choi'] }
+  ]},
+  { lat: 33.9480, lon: -83.3773, institutions: [{ name: 'University of Georgia', founding: true, funded: ['L. Jason Anastasopoulos'] }] },
+  { lat: 30.2849, lon: -97.7341, institutions: [{ name: 'UT Austin', founding: true, funded: ['Gordon Abner'] }] },
+  { lat: 30.6120, lon: -96.3405, institutions: [{ name: 'Texas A&M University', founding: false, funded: ['M. Blake Emidy'] }] },
+  { lat: 32.7297, lon: -97.1131, institutions: [{ name: 'UT Arlington', founding: false, funded: ['Evan Mistur'] }] },
+  { lat: 33.4242, lon: -111.9281, cluster: 'Arizona State University', institutions: [
+    { name: 'Arizona State University (Howell)', founding: true, funded: ['Anthony Howell — Innovation Governance Capacity'] },
+    { name: 'Arizona State University (Robinson)', founding: true, funded: ['Scott E. Robinson — Local Emergency Management'] }
+  ]},
+  { lat: 38.9543, lon: -95.2558, institutions: [{ name: 'University of Kansas', founding: true, funded: ['Zach Mohr'] }] },
+  { lat: 40.7420, lon: -74.1724, institutions: [{ name: 'Rutgers-Newark', founding: true, funded: ['Greg Porumbescu'] }] },
+  { lat: 42.2780, lon: -83.7382, institutions: [{ name: 'University of Michigan', founding: true, funded: ['Don Moynihan'] }] },
+  { lat: 41.5017, lon: -81.6750, institutions: [{ name: 'Cleveland State University', founding: true, funded: [] }] },
+  { lat: 40.0067, lon: -83.0305, institutions: [{ name: 'Ohio State / Impact Project', founding: false, funded: ['Abby André'] }] },
+  { lat: 42.6862, lon: -73.8242, institutions: [{ name: 'SUNY Albany', founding: true, funded: ['Hongseok Lee'] }] },
+  { lat: 28.6024, lon: -81.2001, institutions: [{ name: 'University of Central Florida', founding: false, funded: ['Thomas Bryer'] }] },
+  { lat: 35.3075, lon: -80.7331, institutions: [{ name: 'UNC Charlotte', founding: false, funded: ['Jaclyn Piatak'] }] },
+  { lat: 41.8708, lon: -87.6505, institutions: [{ name: 'University of Illinois Chicago', founding: false, funded: ['Kate Albrecht'] }] },
+  { lat: 30.4133, lon: -91.1800, institutions: [{ name: 'LSU', founding: false, funded: ['Anmol Soni'] }] },
+  { lat: 47.6553, lon: -122.3035, institutions: [{ name: 'University of Washington', founding: false, funded: ['Benjamin M. Brunjes'] }] },
+  { lat: 56.8094, lon: -132.9569, institutions: [{ name: 'Inside Passage Field Studies', founding: false, funded: ['Erin Steinkruger'] }] }
+];
+
+const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+const landFill = isDark ? '#2C2C2A' : '#F1EFE8';
+const landStroke = isDark ? '#5F5E5A' : '#B4B2A9';
+
+const width = 680, height = 420;
+const svg = d3.select('#map').append('svg')
+  .attr('viewBox', `0 0 ${width} ${height}`)
+  .attr('width', '100%')
+  .style('display', 'block');
+
+const projection = d3.geoAlbersUsa().scale(820).translate([width / 2, height / 2]);
+const path = d3.geoPath(projection);
+const tooltip = document.getElementById('tooltip');
+
+function getDotType(inst) {
+  const f = inst.founding;
+  const p = inst.funded.length > 0;
+  if (f && p) return 'both';
+  if (f) return 'founding';
+  return 'funded';
+}
+
+function getClusterType(institutions) {
+  const hasFounding = institutions.some(i => i.founding);
+  const hasFunded = institutions.some(i => i.funded.length > 0);
+  if (hasFounding && hasFunded) return 'both';
+  if (hasFounding) return 'founding';
+  return 'funded';
+}
+
+d3.json('https://cdn.jsdelivr.net/npm/us-atlas@3/states-10m.json').then(us => {
+  svg.append('g')
+    .selectAll('path')
+    .data(topojson.feature(us, us.objects.states).features)
+    .join('path')
+    .attr('d', path)
+    .attr('fill', landFill)
+    .attr('stroke', landStroke)
+    .attr('stroke-width', 0.5);
+
+  const groups = svg.append('g').selectAll('g')
+    .data(points.filter(d => projection([d.lon, d.lat]) !== null))
+    .join('g')
+    .attr('transform', d => {
+      const p = projection([d.lon, d.lat]);
+      return p ? `translate(${p[0]},${p[1]})` : null;
+    })
+    .style('cursor', 'pointer');
+
+  groups.each(function(d) {
+    const g = d3.select(this);
+    const isCluster = d.institutions.length > 1;
+
+    if (isCluster) {
+      const type = getClusterType(d.institutions);
+      const r = 11;
+      if (type === 'both') {
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', '#534AB7').attr('stroke', '#fff').attr('stroke-width', 1.5);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', '#D85A30').attr('stroke', '#fff').attr('stroke-width', 1.5);
+      } else {
+        g.append('circle').attr('r', r).attr('fill', type === 'founding' ? '#534AB7' : '#D85A30').attr('stroke', '#fff').attr('stroke-width', 1.5);
+      }
+      g.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('dominant-baseline', 'central')
+        .attr('fill', '#fff')
+        .attr('font-size', '11px')
+        .attr('font-weight', '500')
+        .attr('pointer-events', 'none')
+        .text(d.institutions.length);
+    } else {
+      const inst = d.institutions[0];
+      const type = getDotType(inst);
+      const r = 6;
+      if (type === 'both') {
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', '#534AB7').attr('stroke', '#fff').attr('stroke-width', 1);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', '#D85A30').attr('stroke', '#fff').attr('stroke-width', 1);
+      } else {
+        g.append('circle').attr('r', r).attr('fill', type === 'founding' ? '#534AB7' : '#D85A30').attr('stroke', '#fff').attr('stroke-width', 1);
+      }
+    }
+  });
+
+  groups.on('mouseenter', function(event, d) {
+      let html = '';
+      if (d.cluster) {
+        html = '<strong>' + d.cluster + '</strong><br>';
+        html += d.institutions.map(i => {
+          const roles = [];
+          if (i.founding) roles.push('founding member');
+          if (i.funded.length > 0) roles.push('funded: ' + i.funded.join(', '));
+          return '&bull; ' + i.name.replace(/ \(.+?\)/, '') + ' <span style="color: var(--color-text-secondary)">— ' + roles.join('; ') + '</span>';
+        }).join('<br>');
+      } else {
+        const inst = d.institutions[0];
+        const roles = [];
+        if (inst.founding) roles.push('Founding member');
+        if (inst.funded.length > 0) roles.push('Funded: ' + inst.funded.join(', '));
+        html = '<strong>' + inst.name + '</strong><br>' + roles.join('<br>');
+      }
+      tooltip.innerHTML = html;
+      tooltip.style.opacity = '1';
+    })
+    .on('mousemove', function(event) {
+      const offset = 14;
+      const tipWidth = tooltip.offsetWidth;
+      const tipHeight = tooltip.offsetHeight;
+      let x = event.clientX + offset;
+      let y = event.clientY + offset;
+      if (x + tipWidth > window.innerWidth - 10) x = event.clientX - tipWidth - offset;
+      if (y + tipHeight > window.innerHeight - 10) y = event.clientY - tipHeight - offset;
+      tooltip.style.left = x + 'px';
+      tooltip.style.top = y + 'px';
+    })
+    .on('mouseleave', function() {
+      tooltip.style.opacity = '0';
+    });
+});
+</script>

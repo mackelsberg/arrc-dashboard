@@ -140,8 +140,9 @@ d3.json(window.__resources.usAtlas).then(us => {
       const type = getClusterType(d.institutions);
       const r = 12;
       if (type === 'both') {
-        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE).attr('stroke', PAPER).attr('stroke-width', 1.5);
-        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE).attr('stroke', PAPER).attr('stroke-width', 1.5);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE);
+        g.append('circle').attr('r', r).attr('fill', 'none').attr('stroke', PAPER).attr('stroke-width', 1.5);
       } else {
         g.append('circle').attr('r', r).attr('fill', type === 'founding' ? PURPLE : ORANGE).attr('stroke', PAPER).attr('stroke-width', 1.5);
       }
@@ -154,8 +155,9 @@ d3.json(window.__resources.usAtlas).then(us => {
       const type = getDotType(inst);
       const r = 6.5;
       if (type === 'both') {
-        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE).attr('stroke', PAPER).attr('stroke-width', 1);
-        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE).attr('stroke', PAPER).attr('stroke-width', 1);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,1 ${r},0 Z`).attr('fill', PURPLE);
+        g.append('path').attr('d', `M-${r},0 A${r},${r} 0 0,0 ${r},0 Z`).attr('fill', ORANGE);
+        g.append('circle').attr('r', r).attr('fill', 'none').attr('stroke', PAPER).attr('stroke-width', 1);
       } else {
         g.append('circle').attr('r', r).attr('fill', type === 'founding' ? PURPLE : ORANGE).attr('stroke', PAPER).attr('stroke-width', 1);
       }
